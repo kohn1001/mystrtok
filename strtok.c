@@ -30,6 +30,9 @@ char *my_strtok(char *str, char *delim)
 
 	if(str) {
 		last = (char*)malloc(strlen(str)+1);
+		if(!last) {
+			free(deli_dict);
+		}
 		to_free = last;
 		strcpy(last, str);
 	}
