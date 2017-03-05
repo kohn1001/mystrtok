@@ -60,7 +60,7 @@ char *my_strtok(char *str, char *delim)
 
 int main()
 {
-	char * str = "- This, a sample string.";
+	char * str = "- This is, a sample string.";
 	char *del = " ,.-";
 	char *s = my_strtok(str, del);
 	while(s) {
