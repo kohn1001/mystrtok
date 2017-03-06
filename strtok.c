@@ -25,6 +25,15 @@ char *my_strtok(char *str, char *delim)
 	int *deli_dict = create_delim_dict(delim);
 
 	if(!deli_dict) {
+	/*this check if we allocate and fail the second time with entering this function */
+		if(to_free) {
+		    free(to_free);
+		}
+		return NULL;
+	}
+
+	if(!deli_dict) {
+		
 		return NULL;
 	}
 
