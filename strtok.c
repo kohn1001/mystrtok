@@ -28,6 +28,7 @@ char *my_strtok(char *str, char *delim)
 	/*this check if we allocate and fail the second time with entering this function */
 		if(to_free) {
 		    free(to_free);
+		    to_free = NULL;
 		}
 		return NULL;
 	}
@@ -41,6 +42,7 @@ char *my_strtok(char *str, char *delim)
 		last = (char*)malloc(strlen(str)+1);
 		if(!last) {
 			free(deli_dict);
+			deli_dict = NULL;
 			return NULL;
 		}
 		to_free = last;
@@ -53,7 +55,9 @@ char *my_strtok(char *str, char *delim)
 	str = last;
 	if(*last == '\0') {
 		free(deli_dict);
+		deli_dict = NULL;
 		free(to_free);
+		to_free = NULL;
 		return NULL;
 	}
 	while (*last != '\0' && !deli_dict[*last]) {
@@ -62,8 +66,11 @@ char *my_strtok(char *str, char *delim)
 	
 	*last = '\0';
 	last++;
-
-	free(deli_dict);
+        if(deli_dcit) {
+	    free(deli_dict);
+	    deli_dict = NULL;
+	}
+	
 	return str;
 }
 
