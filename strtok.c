@@ -66,11 +66,10 @@ char *my_strtok(char *str, char *delim)
 	
 	*last = '\0';
 	last++;
-        if(deli_dcit) {
-	    free(deli_dict);
+    if(deli_dict) {
+		free(deli_dict);
 	    deli_dict = NULL;
 	}
-	
 	return str;
 }
 
